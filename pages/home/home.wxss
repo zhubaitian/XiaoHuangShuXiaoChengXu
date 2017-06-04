@@ -1,0 +1,48 @@
+.search-panel {
+    position: fixed;
+    width: 100%;
+    background-color: orange;
+    top: 0;
+}
+
+.search-wrapper {
+    padding: 10rpx 0rpx;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.search-input-wrapper {
+    flex: 8;
+    padding: 10rpx;
+    background-color: darkorange;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: row;
+    margin-left: 80rpx;
+}
+
+.search-input-before {
+    flex: 1;
+    height: 60rpx;
+    width: 60rpx;
+    padding-top: 8rpx;
+}
+.search-input {
+    flex: 8;
+    padding-top: 5rpx;
+    padding-left: 5rpx;
+}
+
+.search-upload-wrapper {
+    padding-left: 15rpx;
+    padding-right: 15rpx;
+    padding-top:5rpx;
+    flex: 1;
+}
+
+.search-upload-img {
+    width: 60rpx;
+    height: 60rpx;
+    padding-top: 8rpx;
+}

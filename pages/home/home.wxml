@@ -1,1 +1,12 @@
 <!--pages/home/home.wxml-->
+<view class="search-panel">
+    <view class="search-wrapper">
+        <view class="search-input-wrapper ">
+            <image class="search-input-before" src="../../res/icons/search_100px_default.png"></image>
+            <input bindinput="bindSearchInput" bindconfirm="search" class="search-input" placeholder="搜索笔记，商品和用户" value="{{input}}" confirm-type="search" />
+        </view>
+        <view class="search-upload-wrapper">
+            <image class="search-upload-img" src="/res/icons/camera_100px_default.png" bindtap="onCameraTap"></image>
+        </view>
+    </view>
+</view>

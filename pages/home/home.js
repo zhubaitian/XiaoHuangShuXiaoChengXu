@@ -64,5 +64,16 @@ Page({
   
   },
 
+  onCameraTap: (e) => {
+    console.log('onCameraTap:', e);
+  },
+
+  bindSearchInput: (e) => {
+    console.log('input with value:',e.detail.value);
+  },
+
+  search: (e) => {
+    console.log('confirm with value:',e.detail.value);
+  },
 
 })

@@ -2,5 +2,4 @@
 
 # Change List
 ---
-1. Setup navigator tabBar | 设置导航栏
-2. Setup title  | 设置标题栏
+1. Search Bar UI Implementation | 搜索栏用户界面实现
