@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/search/search",
+    "pages/shopping/shopping",
+    "pages/messages/messages",
+    "pages/about/about"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "orange",
+    "navigationBarTitleText": "小黄书",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "Orange",
+    "borderStyle": "grey",
+    "backgroundColor": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "res/icons/home_100px_default.png",
+        "selectedIconPath": "res/icons/home_100px_selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "iconPath": "res/icons/search_100px_default.png",
+        "selectedIconPath": "res/icons/search_100px_selected.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/shopping/shopping",
+        "iconPath": "res/icons/cart_100px_default.png",
+        "selectedIconPath": "res/icons/cart_100px_selected.png",
+        "text": "购买"
+      },
+      {
+        "pagePath": "pages/messages/messages",
+        "iconPath": "res/icons/message_100px_default.png",
+        "selectedIconPath": "res/icons/message_100px_selected.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "iconPath": "res/icons/avatar_100px_default.png",
+        "selectedIconPath": "res/icons/avatar_100px_selected.png",
+        "text": "我"
+      }
+    ]
+  }
+}
