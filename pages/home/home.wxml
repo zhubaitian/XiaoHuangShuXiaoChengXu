@@ -10,3 +10,25 @@
         </view>
     </view>
 </view>
+
+<view class="tab-bar-panel">
+    <view class="tab-bar-wrapper">
+        <scroll-view class="scroll-bar" scroll-x  bindscroll="scrollEventHandler">
+            <block wx:for-items="{{keywords}}">
+                <view id="{{item.id}}" class="tab-bar-item {{activeId == item.id ? 'bar-item-active' : ''}} {{(activeId == item.id && hideSlider)? 'bar-item-bottom' : ''}}"  bindtap="tabClick">{{item.name}}
+                </view>
+            </block>
+            <view hidden="{{hideSlider}}" class="bar-slider" style="transform: translateX({{sliderOffset}}px);"></view>
+        </scroll-view>
+        <view class="drop-down-menu" bindtap="filterTap">
+            <image wx:if="{{isCollapse}}" src="/res/icons/arrow_collapse.png"></image>
+            <image wx:else src="/res/icons/arrow_expand.png"></image>
+        </view>
+
+        <view class="filter-panel" hidden="{{isCollapse}}">
+            <view class="filter-wrapper">
+                <text class="{{activeId==item.id?'active':''}}" wx:for="{{keywords}}" wx:key="" data-id="{{item.id}}" data-txt="{{item.name}}" bindtap="filter">{{item.name}}</text>
+            </view>
+        </view>
+    </view>
+</view>
