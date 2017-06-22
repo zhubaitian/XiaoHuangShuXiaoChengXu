@@ -1,6 +1,7 @@
 # XiaoHuangShuXiaoChengXu
 
-# Change List
+# Release Notes
 ---
-1. Horizonal Scroll Tab Bar UI implementation | 水平滑动标签栏界面实现
-2. Drop Down Menu UI implementation | 下拉菜单界面实现
+1. Notes UI implementation | 笔记UI呈现实现
+2. Swipe down refresh | 下拉更新
+3. Swipe up infinit loading new notes | 上拉无限加载新笔记

@@ -9,14 +9,15 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "orange",
+    "navigationBarBackgroundColor": "#FFA500",
     "navigationBarTitleText": "小黄书",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
-    "selectedColor": "Orange",
-    "borderStyle": "grey",
-    "backgroundColor": "white",
+    "selectedColor": "#FFA500",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/home/home",

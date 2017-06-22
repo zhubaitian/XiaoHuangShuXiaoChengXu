@@ -1,140 +1,47 @@
 // pages/home/home.js
+const mock = require('../../config/mock');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    activeId: 1,
-    sliderOffset:0,
-    isCollapse: true,
-    hideSlider: false,
-    keywords: [
-      {
-        id: 1,
-        name: '推荐',
-      },
-      {
-        id: 2,
-        name: '男人',
-      },
-      {
-        id: 3,
-        name: '居家',
-      },
-      {
-        id: 4,
-        name: '时尚',
-      },
-      {
-        id: 5,
-        name: '美食',
-      },
-      {
-        id: 6,
-        name: '旅行',
-      },
-      {
-        id: 7,
-        name: '运动',
-      },
-      {
-        id: 8,
-        name: '护肤',
-      },
-      {
-        id: 9,
-        name: '母婴',
-      },
-      {
-        id: 10,
-        name: '女人',
-      },
-      {
-        id: 11,
-        name: '宠物',
-      },
-      {
-        id: 12,
-        name: '国防',
-      },
-      {
-        id: 13,
-        name: '宠物',
-      },
-      {
-        id: 14,
-        name: '台湾',
-      }
-    ],
-
+    activeTabId: 1,
+    tabBottomSliderOffset:0,
+    isDropDownMenuCollapse: true,
+    hideTabBottomSlider: false,
+    notes: [],
+    imgWidth: 0,
+    loading: false,
+    keywords: mock.home.keywords,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.getSystemInfo({
+      success: (res) => {
+        let ww = res.windowWidth;
+        let imgWidth = ww * 0.48 ;
+        this.setData({
+          imgWidth: imgWidth
+        });
+        this.loadNotes();
+     }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
-
-  scrollEventHandler: (e) => {
+  onTabBarScroll: (e) => {
     console.log('scroll event:',e);
   },
 
-  tabClick: function(e) {
+  onTabSelected: function(e) {
     this.setData({
-      activeId: e.currentTarget.id,
-      sliderOffset: e.currentTarget.offsetLeft,
-      hideSlider: false,
+      activeTabId: e.currentTarget.id,
+      tabBottomSliderOffset: e.currentTarget.offsetLeft,
+      hideTabBottomSlider: false,
     });
   },
 
@@ -142,32 +49,83 @@ Page({
     console.log('onCameraTap:', e);
   },
 
-  bindSearchInput: function(e) {
+  onSearchInput: function(e) {
     console.log('input with value:',e.detail.value);
   },
 
-  search: function(e) {
+  onSearch: function(e) {
     console.log('confirm with value:',e.detail.value);
   },
 
-  filterTap: function(e) {
+  onFilterButtonTap: function(e) {
     let self = this;
-    if (self.data.isCollapse === true) {
+    if (self.data.isDropDownMenuCollapse === true) {
       self.setData({
-        isCollapse: false,
+        isDropDownMenuCollapse: false,
       });
     }else {
       self.setData({
-        isCollapse: true,
+        isDropDownMenuCollapse: true,
       });
     }
   },
 
-  filter: function(e) {
+  onTabInDropDownMenuSelected: function(e) {
     this.setData({
-      activeId: e.currentTarget.dataset.id,
-      isCollapse: true,
-      hideSlider: true,
+      activeTabId: e.currentTarget.dataset.id,
+      isDropDownMenuCollapse: true,
+      hideTabBottomSlider: true,
     });
+  },
+
+  onImageLoad: function (e) {
+    let oImgW = e.detail.width;         //图片原始宽度
+    let oImgH = e.detail.height;        //图片原始高度
+    let imgWidth = this.data.imgWidth;  //图片设置的宽度
+    let scale = imgWidth / oImgW;        //比例计算
+    let imgHeight = oImgH * scale;      //自适应高度
+
+    const notes = this.data.notes;
+    for (let note of notes) {
+      if (note.id == e.currentTarget.dataset.id) {
+        note.imgHeight = imgHeight;
+      }
+    }
+    this.setData({
+      notes: notes
+    });
+  },
+
+  loadNotes: function() {
+    const notes = mock.home.notes;
+    const newNotes = this.data.notes.concat(notes);
+    this.setData({
+      notes: newNotes
+    });
+  },
+
+  onReachBottom: function(e) {
+    if (this.data.loading) return;
+
+    this.setData({ loading: true });
+
+    this.loadNotes();
+
+    setTimeout( () =>{
+      this.setData({
+        loading: false,
+      })
+    }, 20000)
+  },
+
+  onPullDownRefresh: function() {
+    console.log('Pull down');
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.loadNotes();
+
+    setTimeout( () =>{
+      wx.hideNavigationBarLoading(); //在标题栏中显示加载
+      wx.stopPullDownRefresh();
+    }, 2000)
   }
 })

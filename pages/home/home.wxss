@@ -1,3 +1,9 @@
+
+page {
+    font-size: 35rpx;
+    font-style: normal;
+    font-family: "Microsoft YaHei";
+}
 .search-panel {
     position: fixed;
     width: 100%;
@@ -57,6 +63,7 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    background-color: white;
 }
 
 .tab-bar-wrapper .scroll-bar {
@@ -132,3 +139,97 @@
     float:left;
     border: 1rpx solid #CCCCCC;
 }
+
+
+
+.content-container {
+    margin-top:215rpx;
+}
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item_box {
+    width: 48%;
+    margin: 0 1%;
+    /*border-style: groove;*/
+}
+
+.item_box image{
+    width: 100%;
+    max-height: 380rpx;
+}
+
+.item_box .item_title{
+    font-weight: bold;
+    margin-top:20rpx;
+    margin-bottom:20rpx;
+
+    overflow: hidden;
+    display: -webkit-box;  /* 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 */
+    -webkit-box-orient: vertical; /* 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 */
+    -webkit-line-clamp:2; /* 用来限制在一个块元素显示的文本的行数 */
+    text-overflow:ellipsis; /* 可以用来多行文本的情况下，用省略号“…”隐藏超出范围的文本 */
+
+}
+
+.item_box .item_digest{
+    color: grey;
+    margin-bottom: 20rpx;
+
+    overflow: hidden;
+    display: -webkit-box;  /* 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 */
+    -webkit-box-orient: vertical; /* 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 */
+    -webkit-line-clamp:3; /* 用来限制在一个块元素显示的文本的行数 */
+    text-overflow:ellipsis; /* 可以用来多行文本的情况下，用省略号“…”隐藏超出范围的文本 */
+
+}
+
+.item_box .userinfo_wrapper {
+    margin: 10rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.item_box .userinfo-avatar {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    flex: 1;
+}
+
+.item_box .userinfo-nickname {
+    margin-left: 10rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    flex: 6;
+}
+
+.item_box .like_image {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    flex: 1;
+}
+
+.item_box .like_count {
+    color: #aaa;
+    margin-left: 10rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.refresh-block{
+    display: flex;
+    justify-content: center;
+
+}
+.refresh-block image{
+    width:100rpx;
+    height: 100rpx;
+}
+
