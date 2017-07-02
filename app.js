@@ -1,30 +1,50 @@
 //app.js
+
+const config = require('./config/application');
+
 App({
   onLaunch: function () {
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    this.signin(function(userInfo) {
+      console.log('userInfo:',userInfo);
+    })
   },
-  getUserInfo:function(cb){
+  signin:function(cb) {
     var that = this
-    if(this.globalData.userInfo){
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
-      //调用登录接口
-      wx.login({
-        success: function () {
+    //调用登录接口以获取code
+    wx.login({
+      success: function (res) {
+        const code = res.code;
+        if (code) {
           wx.getUserInfo({
+            withCredentials: true,
             success: function (res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
+              that.globalData.userInfo = res.userInfo;
+              typeof cb == "function" && cb(that.globalData.userInfo);
+
+              // 调用服务器登录接口获取access_token
+              wx.request({
+                url: `${config.server.protocol}://${config.server.url}/${config.server.version}/auth/signin`,
+                data: {
+                  wxcode: code,
+                  encryptedData: res.encryptedData,
+                  iv: res.iv
+                },
+                method: 'POST',
+                json: true,
+                success: function (res) {
+                  console.log('response:', res);
+                  wx.setStorageSync('access_token', res.data);
+                }
+              })
             }
           })
+        } else {
+          console.log('wx.login failed：' + res.errMsg);
         }
-      })
-    }
+      }
+    })
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
   }
 })
