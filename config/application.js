@@ -5,7 +5,7 @@
 module.exports = {
     server: {
         protocol: 'http',
-        url: '2a90e26a.ngrok.io',
+        host: 'da328a66.ngrok.io',
         version: 'v1',
     }
 }

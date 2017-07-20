@@ -1,0 +1,58 @@
+<!--pages/home/home.wxml-->
+<view class="search-panel">
+    <view class="search-wrapper">
+        <view class="search-input-wrapper ">
+            <image class="search-input-before" src="../../res/icons/search_100px_default.png"></image>
+            <input bindinput="onSearchInput" bindconfirm="onSearch" class="search-input" placeholder="搜索笔记，商品和用户" value="{{input}}" confirm-type="search" />
+        </view>
+        <view class="search-upload-wrapper">
+            <image class="search-upload-img" src="/res/icons/camera_100px_default.png" bindtap="onCameraTap"></image>
+        </view>
+    </view>
+</view>
+
+<view class="tab-bar-panel">
+    <view class="tab-bar-wrapper">
+        <scroll-view class="scroll-bar" scroll-x  bindscroll="onTabBarScroll">
+            <block wx:for-items="{{keywords}}"  wx:key="">
+                <view id="{{item.id}}" class="tab-bar-item {{activeTabId == item.id ? 'bar-item-active' : ''}} {{(activeTabId == item.id && hideTabBottomSlider)? 'bar-item-bottom' : ''}}" bindtap="onTabSelected">{{item.name}}
+                </view>
+            </block>
+            <view hidden="{{hideTabBottomSlider}}" class="bar-slider" style="transform: translateX({{tabBottomSliderOffset}}px);"></view>
+        </scroll-view>
+        <view class="drop-down-menu" bindtap="onFilterButtonTap">
+            <image wx:if="{{isDropDownMenuCollapse}}" src="/res/icons/arrow_collapse.png"></image>
+            <image wx:else src="/res/icons/arrow_expand.png"></image>
+        </view>
+
+        <view class="filter-panel" hidden="{{isDropDownMenuCollapse}}">
+            <view class="filter-wrapper">
+                <text class="{{activeTabId==item.id?'active':''}}" wx:for="{{keywords}}" wx:key="" data-id="{{item.id}}" data-txt="{{item.name}}" bindtap="onTabInDropDownMenuSelected">{{item.name}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="content-container">
+    <view class="content-wrapper">
+        <block wx:for="{{notes}}" wx:key="">
+            <view class="item_box">
+                <navigator url="../note_detail/index?id={{item.id}}">
+                    <image style="height:{{item.imgHeight}}px" src="{{item.images[0]}}"  data-id="{{item.id}}" bindload="onImageLoad" />
+                    <view class="item_title">{{item.title}}</view>
+                    <view class="item_digest">{{item.description}}</view>
+                </navigator>
+                <view class="userinfo_wrapper">
+                    <image class="userinfo-avatar" src="{{item.owner.avatar}}" background-size="cover"></image>
+                    <view class="userinfo-nickname">{{item.owner.nickname}}</view>
+                    <image class="like_image" src="/res/icons/heart_100px.png" background-size="cover"></image>
+                    <view class="like_count">{{item.like}}</view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
+
+<view class="refresh-block" wx:if="{{loading}}">
+    <image  src="../../res/images/loading.gif"></image>
+</view>

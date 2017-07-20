@@ -1,0 +1,259 @@
+
+page {
+    font-size: 35rpx;
+    font-style: normal;
+    font-family: "Microsoft YaHei";
+}
+.search-panel {
+    position: fixed;
+    width: 100%;
+    background-color: orange;
+    top: 0;
+}
+
+.search-wrapper {
+    padding: 10rpx 0rpx;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.search-input-wrapper {
+    flex: 8;
+    padding: 10rpx;
+    background-color: darkorange;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: row;
+    margin-left: 80rpx;
+}
+
+.search-input-before {
+    flex: 1;
+    height: 60rpx;
+    width: 60rpx;
+    padding-top: 8rpx;
+}
+.search-input {
+    flex: 8;
+    padding-top: 5rpx;
+    padding-left: 5rpx;
+}
+
+.search-upload-wrapper {
+    padding-left: 15rpx;
+    padding-right: 15rpx;
+    padding-top:5rpx;
+    flex: 1;
+}
+
+.search-upload-img {
+    width: 60rpx;
+    height: 60rpx;
+    padding-top: 8rpx;
+}
+
+.tab-bar-panel {
+    position: fixed;
+    top: 100rpx;
+    width: 100%;
+}
+
+.tab-bar-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: white;
+}
+
+.tab-bar-wrapper .scroll-bar {
+    white-space: nowrap;
+    height: 120rpx;
+    border-bottom: 1rpx solid #CCCCCC;
+    flex: 8;
+    overflow:hidden;
+}
+
+.tab-bar-wrapper .drop-down-menu {
+    padding-left: 26rpx;
+    padding-top: 32rpx;
+    border-bottom: 1rpx solid #CCCCCC;
+    flex: 1;
+}
+
+.tab-bar-item {
+    margin-left: 26rpx;
+    display: inline-block;
+    padding: 13px 0;
+}
+.tab-bar-item.bar-item-active {
+    color: orange;
+    font-weight: bold;
+}
+
+.tab-bar-item.bar-item-bottom {
+    border-bottom: 3px solid darkorange;
+}
+
+.bar-slider {
+    width: 70rpx;
+    height: 8rpx;
+    background-color: orange;
+    transition: transform .3s;
+}
+
+.drop-down-menu image {
+    width:26rpx;
+    height:26rpx;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.filter-panel {
+    position: fixed;
+    top:215rpx;
+    box-shadow: 0 5px 5px rgba(0,0,0,.15);
+    width: 100%;
+    left: 0;
+}
+
+.filter-wrapper {
+    display: block;
+    overflow: hidden;
+    z-index: 1;
+    background: #fff;
+    padding-bottom: 26rpx;
+    border-bottom: solid 1px #eee;
+    text-align: center;
+}
+
+.filter-wrapper .active{
+    color:orange;
+    border-color:orange;
+    font-weight: bold;
+}
+.filter-wrapper text{
+    width:210rpx;
+    height:60rpx;
+    line-height:60rpx;
+    float:left;
+    border: 1rpx solid #CCCCCC;
+}
+
+
+
+.content-container {
+    margin-top:215rpx;
+}
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    /*column-count:2;*/
+    /*column-gap: 2px;*/
+}
+
+.item_box {
+    width: 47%;
+    margin: 0 0.5%;
+    /*width: 100%;*/
+
+    /*width: 100%;*/
+    border-style: groove;
+    /*display:flex;*/
+
+}
+
+.item_box image{
+    width: 100%;
+    /*height: 90px;*/
+    max-height: 180px;
+    overflow:hidden;
+    display: inline-block;
+
+}
+
+.item_box .item_title{
+    font-weight: bold;
+    margin-top:20rpx;
+    margin-bottom:20rpx;
+
+    overflow: hidden;
+    display: -webkit-box;  /* 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 */
+    -webkit-box-orient: vertical; /* 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 */
+    -webkit-line-clamp:2; /* 用来限制在一个块元素显示的文本的行数 */
+    text-overflow:ellipsis; /* 可以用来多行文本的情况下，用省略号“…”隐藏超出范围的文本 */
+
+}
+
+.item_box .item_digest{
+    color: grey;
+    margin-bottom: 20rpx;
+
+    overflow: hidden;
+    display: -webkit-box;  /* 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 */
+    -webkit-box-orient: vertical; /* 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 */
+    -webkit-line-clamp:3; /* 用来限制在一个块元素显示的文本的行数 */
+    text-overflow:ellipsis; /* 可以用来多行文本的情况下，用省略号“…”隐藏超出范围的文本 */
+
+}
+
+.item_box .userinfo_wrapper {
+    margin: 10rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.item_box .userinfo-avatar {
+    width: 40rpx;
+    height: 40rpx;
+    /*margin: 10rpx;*/
+    border-radius: 50%;
+    flex: 1;
+}
+
+.item_box .userinfo-nickname {
+    /*display: inline-block;*/
+    color: #aaa;
+    margin-left: 10rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    /*width: 60%;*/
+    flex: 6;
+}
+
+.item_box .like_image {
+    width: 40rpx;
+    height: 40rpx;
+    /*margin: 10rpx;*/
+    border-radius: 50%;
+    flex: 1;
+}
+
+.item_box .like_count {
+    /*display: inline-block;*/
+    color: #aaa;
+    margin-left: 10rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    /*width: 60%;*/
+    flex: 1;
+}
+
+.refresh-block{
+    display: flex;
+    justify-content: center;
+
+}
+.refresh-block image{
+    width:100rpx;
+    height: 100rpx;
+}
+
+.img_item {
+    width: 48%;
+    margin: 1%;
+    display: inline-block;
+    vertical-align: top;
+}
